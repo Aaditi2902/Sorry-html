@@ -3,9 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Apology Page</title>
+    <style>
+        body {
+            background-color: #f9f9f9;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            color: #d9534f;
+            margin-top: 50px;
+        }
+        button {
+            background-color: #5cb85c;
+            color: white;
+            font-size: 18px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #4cae4c;
+        }
+        .heart {
+            position: absolute;
+            color: red;
+            font-size: 24px;
+            animation: floating 3s ease-in-out infinite;
+        }
+        @keyframes floating {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0); }
+        }
+    </style>
 </head>
 <body>
+    <h1>I am really sorry!</h1>
     <button onclick="alert('I love you ❤️')">Click Me!</button>
+    <script>
+      function createFloatingHearts() {
+          for (let i = 0; i < 10; i++) {
+              let heart = document.createElement('div');
+              heart.className = 'heart';
+              heart.innerHTML = '❤️';
+              heart.style.left = Math.random() * 100 + 'vw';
+              heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+              document.body.appendChild(heart);
+              setTimeout(() => {
+                  heart.remove();
+              }, 3000);
+          }
+      }
+      setInterval(createFloatingHearts, 3000);
+    </script>
 </body>
 </html>
